@@ -1,0 +1,368 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7F64C04C2ACE475700F4773B /* Week_04App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F64C04B2ACE475700F4773B /* Week_04App.swift */; };
+		7F64C04E2ACE475700F4773B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F64C04D2ACE475700F4773B /* ContentView.swift */; };
+		7F64C0502ACE475800F4773B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F64C04F2ACE475800F4773B /* Assets.xcassets */; };
+		7F64C0532ACE475800F4773B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F64C0522ACE475800F4773B /* Preview Assets.xcassets */; };
+		7F64C05A2ACE533700F4773B /* cat-eating-dry-food-133130.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F64C0592ACE533700F4773B /* cat-eating-dry-food-133130.mp3 */; };
+		7F64C05C2ACE54FF00F4773B /* kitten-and-pizza.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F64C05B2ACE54FF00F4773B /* kitten-and-pizza.jpg */; };
+		7F64C0642ACE60CD00F4773B /* cat-purr-6164.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F64C0632ACE60CD00F4773B /* cat-purr-6164.mp3 */; };
+		7F64C0682ACE666C00F4773B /* kittencute.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F64C0672ACE666C00F4773B /* kittencute.jpg */; };
+		7F64C06C2ACE677300F4773B /* cutekitten.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F64C06B2ACE677300F4773B /* cutekitten.jpg */; };
+		7F64C06E2ACE679800F4773B /* cats-meow-81221.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F64C06D2ACE679800F4773B /* cats-meow-81221.mp3 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7F64C0482ACE475700F4773B /* Week 04.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Week 04.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F64C04B2ACE475700F4773B /* Week_04App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week_04App.swift; sourceTree = "<group>"; };
+		7F64C04D2ACE475700F4773B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7F64C04F2ACE475800F4773B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7F64C0522ACE475800F4773B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7F64C0592ACE533700F4773B /* cat-eating-dry-food-133130.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cat-eating-dry-food-133130.mp3"; sourceTree = "<group>"; };
+		7F64C05B2ACE54FF00F4773B /* kitten-and-pizza.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "kitten-and-pizza.jpg"; sourceTree = "<group>"; };
+		7F64C0632ACE60CD00F4773B /* cat-purr-6164.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cat-purr-6164.mp3"; sourceTree = "<group>"; };
+		7F64C0672ACE666C00F4773B /* kittencute.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kittencute.jpg; sourceTree = "<group>"; };
+		7F64C06B2ACE677300F4773B /* cutekitten.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cutekitten.jpg; sourceTree = "<group>"; };
+		7F64C06D2ACE679800F4773B /* cats-meow-81221.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cats-meow-81221.mp3"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7F64C0452ACE475700F4773B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7F64C03F2ACE475700F4773B = {
+			isa = PBXGroup;
+			children = (
+				7F64C04A2ACE475700F4773B /* Week 04 */,
+				7F64C0492ACE475700F4773B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7F64C0492ACE475700F4773B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7F64C0482ACE475700F4773B /* Week 04.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7F64C04A2ACE475700F4773B /* Week 04 */ = {
+			isa = PBXGroup;
+			children = (
+				7F64C04B2ACE475700F4773B /* Week_04App.swift */,
+				7F64C04D2ACE475700F4773B /* ContentView.swift */,
+				7F64C04F2ACE475800F4773B /* Assets.xcassets */,
+				7F64C06D2ACE679800F4773B /* cats-meow-81221.mp3 */,
+				7F64C06B2ACE677300F4773B /* cutekitten.jpg */,
+				7F64C0672ACE666C00F4773B /* kittencute.jpg */,
+				7F64C0632ACE60CD00F4773B /* cat-purr-6164.mp3 */,
+				7F64C05B2ACE54FF00F4773B /* kitten-and-pizza.jpg */,
+				7F64C0592ACE533700F4773B /* cat-eating-dry-food-133130.mp3 */,
+				7F64C0512ACE475800F4773B /* Preview Content */,
+			);
+			path = "Week 04";
+			sourceTree = "<group>";
+		};
+		7F64C0512ACE475800F4773B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7F64C0522ACE475800F4773B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7F64C0472ACE475700F4773B /* Week 04 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F64C0562ACE475800F4773B /* Build configuration list for PBXNativeTarget "Week 04" */;
+			buildPhases = (
+				7F64C0442ACE475700F4773B /* Sources */,
+				7F64C0452ACE475700F4773B /* Frameworks */,
+				7F64C0462ACE475700F4773B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Week 04";
+			productName = "Week 04";
+			productReference = 7F64C0482ACE475700F4773B /* Week 04.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7F64C0402ACE475700F4773B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					7F64C0472ACE475700F4773B = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 7F64C0432ACE475700F4773B /* Build configuration list for PBXProject "Week 04" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7F64C03F2ACE475700F4773B;
+			productRefGroup = 7F64C0492ACE475700F4773B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7F64C0472ACE475700F4773B /* Week 04 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7F64C0462ACE475700F4773B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F64C0532ACE475800F4773B /* Preview Assets.xcassets in Resources */,
+				7F64C0642ACE60CD00F4773B /* cat-purr-6164.mp3 in Resources */,
+				7F64C05C2ACE54FF00F4773B /* kitten-and-pizza.jpg in Resources */,
+				7F64C05A2ACE533700F4773B /* cat-eating-dry-food-133130.mp3 in Resources */,
+				7F64C06E2ACE679800F4773B /* cats-meow-81221.mp3 in Resources */,
+				7F64C0502ACE475800F4773B /* Assets.xcassets in Resources */,
+				7F64C06C2ACE677300F4773B /* cutekitten.jpg in Resources */,
+				7F64C0682ACE666C00F4773B /* kittencute.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7F64C0442ACE475700F4773B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F64C04E2ACE475700F4773B /* ContentView.swift in Sources */,
+				7F64C04C2ACE475700F4773B /* Week_04App.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7F64C0542ACE475800F4773B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7F64C0552ACE475800F4773B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7F64C0572ACE475800F4773B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Week 04/Preview Content\"";
+				DEVELOPMENT_TEAM = MK337R7LM7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yx2165.Week04.Week-04";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7F64C0582ACE475800F4773B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Week 04/Preview Content\"";
+				DEVELOPMENT_TEAM = MK337R7LM7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yx2165.Week04.Week-04";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7F64C0432ACE475700F4773B /* Build configuration list for PBXProject "Week 04" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F64C0542ACE475800F4773B /* Debug */,
+				7F64C0552ACE475800F4773B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7F64C0562ACE475800F4773B /* Build configuration list for PBXNativeTarget "Week 04" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F64C0572ACE475800F4773B /* Debug */,
+				7F64C0582ACE475800F4773B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7F64C0402ACE475700F4773B /* Project object */;
+}
