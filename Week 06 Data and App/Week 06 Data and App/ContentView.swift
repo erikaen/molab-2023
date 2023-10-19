@@ -1,20 +1,26 @@
 //
 //  ContentView.swift
-//  Week 05 Storage and App
+//  Week 06 Data and App
 //
-//  Created by 项一诺 on 10/12/23.
+//  Created by 项一诺 on 10/18/23.
 //
 
 import SwiftUI
 import PhotosUI
 import AVFoundation
 
+//RESOURCE:
+//ImagePicker Controller: https://www.hackingwithswift.com/read/10/4/importing-photos-with-uiimagepickercontroller
+//onChange():https://www.hackingwithswift.com/quick-start/swiftui/how-to-run-some-code-when-state-changes-using-onchange
+
 struct Song: Identifiable, Equatable {
     let id = UUID()
     let title: String
-    let fileName: String
+    let fileName: String?
     let imageName: String
+    let image: UIImage?
 }
+
 
 struct User {
     var favorites: Set<UUID> = []
@@ -23,29 +29,43 @@ struct User {
 struct ContentView: View {
     @StateObject var audioPlayerManager = AudioPlayerManager()
     @State private var user = User()
-    @State private var songs: [Song] = [ // Define your initial songs here
-        Song(title: "Kitten Eating", fileName: "cat-eating-dry-food-133130", imageName: "kitten-and-pizza"),
-        Song(title: "Kitten Purring", fileName: "cat-purr-6164", imageName: "kittencute"),
-        Song(title: "Kitten Meowing", fileName: "cats-meow-81221", imageName: "cutekitten")
+    @State private var songs: [Song] = [
+        Song(title: "Kitten Eating", fileName: "cat-eating-dry-food-133130", imageName: "kitten-and-pizza", image: nil),
+        Song(title: "Kitten Purring", fileName: "cat-purr-6164", imageName: "kittencute", image: nil),
+        Song(title: "Kitten Meowing", fileName: "cats-meow-81221", imageName: "cutekitten", image: nil)
     ]
+
+
+    @State private var isEditing = false
+    
 
     var body: some View {
         TabView {
-            ForEach(songs) { song in
-                NavigationView {
-                    PlayerView(song: song, isFavorite: user.favorites.contains(song.id)) {
-                        if user.favorites.contains(song.id) {
-                            user.favorites.remove(song.id)
-                        } else {
-                            user.favorites.insert(song.id)
+            NavigationView {
+                List {
+                    ForEach(songs) { song in
+                        NavigationLink(destination: PlayerView(song: song, isFavorite: user.favorites.contains(song.id)) {
+                            if user.favorites.contains(song.id) {
+                                user.favorites.remove(song.id)
+                            } else {
+                                user.favorites.insert(song.id)
+                            }
+                        }) {
+                            Text(song.title)
                         }
                     }
-                    .environmentObject(audioPlayerManager)
+                    .onDelete(perform: deleteSongs)
                 }
-                .tabItem {
-                    Text(song.title)
-                    Image(systemName: "circle")
-                }
+                .navigationBarTitle("Kittens")
+                .navigationBarItems(
+                    leading: EditButton(),
+                    trailing: Text("Count: \(songs.count)")
+                )
+            }
+            .tabItem {
+                Text("Songs")
+                Image(systemName: "cat")
+                
             }
 
             // Favorites Tab
@@ -54,7 +74,8 @@ struct ContentView: View {
             }
             .tabItem {
                 Text("Favorites")
-                Image(systemName: "star.fill")
+                Image(systemName: "heart.circle.fill")
+                
             }
 
             // New Image Tab
@@ -62,8 +83,8 @@ struct ContentView: View {
                 NewImageView(songs: $songs)
             }
             .tabItem {
-                Text("New Image")
-                Image(systemName: "photo")
+                Text("Add Kitten")
+                Image(systemName: "pawprint")
             }
         }
         .onAppear {
@@ -72,26 +93,30 @@ struct ContentView: View {
         }
         .environmentObject(audioPlayerManager) // Provide the AudioPlayerManager to the ContentView
     }
+
+    func deleteSongs(at offsets: IndexSet) {
+        songs.remove(atOffsets: offsets)
+    }
 }
 
 struct NewImageView: View {
     @Binding var songs: [Song]
 
-    @State private var selectedImage: UIImage?
     @State private var newImageLabel: String = ""
     @State private var isImagePickerPresented = false
+    @State private var selectedImage: UIImage?
 
     var body: some View {
         VStack {
-            Text("Add a New Image")
+            Text("Add a New Kitten")
                 .font(.title)
                 .padding()
 
             Button(action: {
                 isImagePickerPresented.toggle()
             }) {
-                Text("Select Image from Library")
-                    .font(.title)
+                Text("Select Kitten Image from Library")
+                    .font(.title2)
             }
 
             if let image = selectedImage {
@@ -106,67 +131,79 @@ struct NewImageView: View {
                 .padding()
 
             Button(action: {
-                if let _ = selectedImage, !newImageLabel.isEmpty {
-                    let newSong = Song(title: newImageLabel, fileName: "", imageName: "custom_image")
+                if let image = selectedImage, !newImageLabel.isEmpty {
+                    let newSong = Song(title: newImageLabel, fileName: nil, imageName: "", image: image)
                     songs.append(newSong)
                     newImageLabel = ""
                     selectedImage = nil
                 }
             }) {
-                Text("Add Image")
+                Text("Add Kitten")
                     .font(.title)
             }
+
         }
-        .navigationBarTitle("New Image", displayMode: .inline)
+        .navigationBarTitle("New Kitten", displayMode: .inline)
         .sheet(isPresented: $isImagePickerPresented) {
             ImagePicker(selectedImage: $selectedImage)
         }
     }
 }
 
-
-struct ImagePicker: UIViewControllerRepresentable {
-    @Binding var selectedImage: UIImage?
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    func makeUIViewController(context: Context) -> PHPickerViewController {
-        var configuration = PHPickerConfiguration()
-        configuration.selectionLimit = 1 // Set to 1 to allow selecting a single image
-        configuration.filter = .images // Set to images to ensure only images are selectable
-        let picker = PHPickerViewController(configuration: configuration)
-        picker.delegate = context.coordinator
-        return picker
-    }
-
-    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {
-        // Nothing to do here
-    }
-
-    class Coordinator: NSObject, PHPickerViewControllerDelegate {
-        var parent: ImagePicker
-
-        init(_ parent: ImagePicker) {
-            self.parent = parent
-        }
-
-        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            if let result = results.first {
-                result.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
-                    if let image = image as? UIImage {
-                        DispatchQueue.main.async { [self] in
-                            parent.selectedImage = image
-                        }
-                    }
-                }
+func saveImage(_ image: UIImage, imageName: String) -> String? {
+    if let jpegData = image.jpegData(compressionQuality: 0.8) {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        if let imagePath = paths.first?.appendingPathComponent(imageName + ".jpg") {
+            do {
+                try jpegData.write(to: imagePath)
+                return imagePath.path
+            } catch {
+                print("Error saving image:", error)
             }
         }
     }
+    return nil
 }
 
+struct ImagePicker: UIViewControllerRepresentable {
+@Binding var selectedImage: UIImage?
+    
 
+func makeCoordinator() -> Coordinator {
+    Coordinator(self)
+}
+
+func makeUIViewController(context: Context) -> UIImagePickerController {
+    let picker = UIImagePickerController()
+    picker.allowsEditing = true
+    picker.delegate = context.coordinator
+    return picker
+}
+
+func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
+    // Nothing to do here
+}
+
+class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    var parent: ImagePicker
+
+    init(_ parent: ImagePicker) {
+        self.parent = parent
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editedImage = info[.editedImage] as? UIImage {
+            print("Selected image is not nil")
+            parent.selectedImage = editedImage
+        }
+        picker.dismiss(animated: true)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+}
+}
 
 struct PlayerView: View {
     let song: Song
@@ -187,25 +224,47 @@ struct PlayerView: View {
                 .font(.title)
                 .fontWeight(.bold)
 
+            VStack {
+                if let fileName = song.fileName {
+                    // Load and display the locally saved image using fileName
+                    Image(fileName)
+                        .resizable()
+                        .cornerRadius(10)
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.all)
+                } else if let image = song.image {
+                    // Display the UIImage object
+                    Image(uiImage: image)
+                        .resizable()
+                        .cornerRadius(10)
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.all)
+                }
+            }
+
             Image(song.imageName)
                 .resizable()
                 .cornerRadius(10)
                 .aspectRatio(contentMode: .fit)
                 .padding(.all)
+            
 
             Button(action: {
                 if isPlaying {
                     audioPlayerManager.stopAudio()
                     stopTimer()
                 } else {
-                    audioPlayerManager.playAudio(fileName: song.fileName)
-                    startTimer()
+                    if let fileName = song.fileName {
+                        audioPlayerManager.playAudio(fileName: fileName)
+                        startTimer()
+                    }
                 }
                 isPlaying.toggle()
             }) {
                 Text(isPlaying ? "Stop Kitten" : "Play Kitten")
                     .font(.title)
             }
+
             
             Button(action: {
                 toggleFavorite()
@@ -316,5 +375,3 @@ class AudioPlayerManager: ObservableObject {
         return nil
     }
 }
-
-
