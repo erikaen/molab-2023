@@ -8,19 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		7F09054C2B185E2B00F0637C /* Final_Project_MoLabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F09054B2B185E2B00F0637C /* Final_Project_MoLabApp.swift */; };
-		7F09054E2B185E2B00F0637C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F09054D2B185E2B00F0637C /* ContentView.swift */; };
+		7F09054E2B185E2B00F0637C /* DiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F09054D2B185E2B00F0637C /* DiceViewController.swift */; };
 		7F0905502B185E2C00F0637C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F09054F2B185E2C00F0637C /* Assets.xcassets */; };
 		7F0905532B185E2C00F0637C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F0905522B185E2C00F0637C /* Preview Assets.xcassets */; };
 		7F0905602B187F7600F0637C /* dice.dae in Resources */ = {isa = PBXBuildFile; fileRef = 7F09055F2B187F7600F0637C /* dice.dae */; };
+		7FC4FDCB2B218B8F007EFD2D /* MineMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC4FDCA2B218B8F007EFD2D /* MineMapViewController.swift */; };
+		7FC4FDCD2B2195F6007EFD2D /* SharedResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC4FDCC2B2195F6007EFD2D /* SharedResults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7F0905482B185E2B00F0637C /* Final Project_MoLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Project_MoLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F09054B2B185E2B00F0637C /* Final_Project_MoLabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Final_Project_MoLabApp.swift; sourceTree = "<group>"; };
-		7F09054D2B185E2B00F0637C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7F09054D2B185E2B00F0637C /* DiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceViewController.swift; sourceTree = "<group>"; };
 		7F09054F2B185E2C00F0637C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F0905522B185E2C00F0637C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7F09055F2B187F7600F0637C /* dice.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = dice.dae; sourceTree = "<group>"; };
+		7FC4FDCA2B218B8F007EFD2D /* MineMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineMapViewController.swift; sourceTree = "<group>"; };
+		7FC4FDCC2B2195F6007EFD2D /* SharedResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedResults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +57,10 @@
 		7F09054A2B185E2B00F0637C /* Final Project_MoLab */ = {
 			isa = PBXGroup;
 			children = (
+				7FC4FDCC2B2195F6007EFD2D /* SharedResults.swift */,
+				7FC4FDCA2B218B8F007EFD2D /* MineMapViewController.swift */,
 				7F09054B2B185E2B00F0637C /* Final_Project_MoLabApp.swift */,
-				7F09054D2B185E2B00F0637C /* ContentView.swift */,
+				7F09054D2B185E2B00F0637C /* DiceViewController.swift */,
 				7F09054F2B185E2C00F0637C /* Assets.xcassets */,
 				7F09055F2B187F7600F0637C /* dice.dae */,
 				7F0905512B185E2C00F0637C /* Preview Content */,
@@ -141,8 +147,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F09054E2B185E2B00F0637C /* ContentView.swift in Sources */,
+				7FC4FDCB2B218B8F007EFD2D /* MineMapViewController.swift in Sources */,
+				7F09054E2B185E2B00F0637C /* DiceViewController.swift in Sources */,
 				7F09054C2B185E2B00F0637C /* Final_Project_MoLabApp.swift in Sources */,
+				7FC4FDCD2B2195F6007EFD2D /* SharedResults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
