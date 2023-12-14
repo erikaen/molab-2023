@@ -3,27 +3,41 @@
 //  Final Project_MoLab
 //
 //  Created by 项一诺 on 11/30/23.
-//
+//  SceneKit Resource and Inspiration: https://github.com/rudrajikadra/Maze-Xcode-Game-Tilt-Your-Phone-Scene-Kit
+
 
 import UIKit
 import CoreMotion
 import SceneKit
+import Combine
+import SwiftUI
 
 protocol DiceRollDelegate: AnyObject {
     func didRollDice(_ result: Int)
 }
 
-class DiceViewController: UIViewController {
-
+class DiceViewController: UIViewController, ObservableObject {
+    var diceRollState: DiceRollState
     let motionManager = CMMotionManager()
     var sceneView: SCNView!
     var scene: SCNScene!
     var diceNode: SCNNode!
     var resultLabel: UILabel!
     var rollCounter: Int = 0
-
+    
     weak var delegate: DiceRollDelegate?
+    
+    init(diceRollState: DiceRollState) {
+        self.diceRollState = diceRollState
+        super.init(nibName: nil, bundle: nil)
+    }
 
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -126,6 +140,7 @@ class DiceViewController: UIViewController {
     }
 
     func rollDice() {
+        
         // Choose a random face to simulate
         let faces: [SCNVector4] = [
             SCNVector4(0, 0, 1, CGFloat.pi * 2),      // Rotate 180 degrees around Z-axis
@@ -160,11 +175,18 @@ class DiceViewController: UIViewController {
             result = 6
         }
 
+        // Notify the diceRollState about the result
+               diceRollState.diceRollResult = result
+        
         // Update the result label
         resultLabel.text = "Result: \(result)"
 
         // Notify the delegate about the result
+        print("Delegate is: \(String(describing: delegate))")
         delegate?.didRollDice(result)
+        print("dice rolled",delegate ?? "no value")
+        
+    
     }
 
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {

@@ -6,8 +6,20 @@
 //
  
 import UIKit
+import SwiftUI
+import Combine
 
 class MineMapViewController: UIViewController, DiceRollDelegate {
+    var diceRollState: DiceRollState
+    init(diceRollState: DiceRollState) {
+        self.diceRollState = diceRollState
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     let gridSize = 5 // Adjust the size of the grid as needed
     var mineMap = [[Bool]]()
     var playerPosition: (x: Int, y: Int)!
@@ -17,6 +29,8 @@ class MineMapViewController: UIViewController, DiceRollDelegate {
     var playerView: UIView! // View representing the player
     var diceRollLabel: UILabel! // Label for the dice roll counter
     var diceViewController: DiceViewController?
+    var isGameOver = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +51,12 @@ class MineMapViewController: UIViewController, DiceRollDelegate {
                    diceRollLabel.bottomAnchor.constraint(equalTo: gridContainerView.bottomAnchor, constant: -20),
                    diceRollLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
                ])
+        
         // Create or present the DiceViewController
-          diceViewController = DiceViewController()
-          if let diceViewController = diceViewController {
-              diceViewController.delegate = self
-              present(diceViewController, animated: true, completion: nil)
-          }
+        diceViewController = DiceViewController(diceRollState: diceRollState)
+        diceViewController?.delegate = self
+        present(diceViewController!, animated: true, completion: nil)
+
        }
     
     func addDirectionButtons() {
@@ -99,22 +113,45 @@ class MineMapViewController: UIViewController, DiceRollDelegate {
     
     // Implement the DiceRollDelegate method
     func didRollDice(_ result: Int) {
-        // Update the label text
-        diceRollLabel.text = "Dice Rolls: \(result)"
-        print("Dice rolled. New counter: \(result)")
-
-        // existing code...
-        if result >= 10 {
-            showWinNotification()
-        }
+        diceRollCounter = result
+        diceRollLabel.text = "Steps Remaining: \(diceRollCounter)"
     }
+
     
     
     @objc func directionButtonPressed(_ sender: UIButton) {
-        guard let direction = sender.title(for: .normal) else { return }
-        let lowercaseDirection = direction.lowercased()
-        movePlayer(steps: 1, direction: lowercaseDirection) // Change the number of steps as needed
+        guard diceRollCounter > 0 else {
+            // No more steps left
+            checkGameStatus()
+            return
+        }
+
+        guard let direction = sender.title(for: .normal)?.lowercased() else { return }
+
+        movePlayer(steps: 1, direction: direction)
+        diceRollCounter -= 1
+        diceRollLabel.text = "Steps Remaining: \(diceRollCounter)"
+
+        if diceRollCounter == 0 {
+            checkGameStatus()
+        }
     }
+    
+    func checkGameStatus() {
+        if mineMap[playerPosition.x][playerPosition.y] {
+            // Player stepped on a mine
+            showGameOverAlert()
+        } else if diceRollCounter == 0 {
+            // Player used all steps and did not step on a mine
+            showWinNotification()
+        } else {
+            // Game continues, player still has steps remaining
+            // You can update the UI to reflect the remaining steps
+        }
+    }
+
+
+
     
     // Inside the movePlayer function:
     func movePlayer(steps: Int, direction: String) {
@@ -147,22 +184,26 @@ class MineMapViewController: UIViewController, DiceRollDelegate {
     
     
     func showWinNotification() {
-           let notificationCenter = UNUserNotificationCenter.current()
+        isGameOver = true
+        let alertController = UIAlertController(title: "Congratulations!", message: "You won the game by avoiding mines!", preferredStyle: .alert)
+        
+        let restartAction = UIAlertAction(title: "Restart", style: .default) { _ in
+            self.restartGame()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Close", style: .cancel, handler: nil)
+        
+        alertController.addAction(restartAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true) {
+                self.visualizeGrid() // Reveal the mine map after presenting the alert
+            }
+    }
 
-           let content = UNMutableNotificationContent()
-           content.title = "Congratulations!"
-           content.body = "You won the game by avoiding mines!"
-           content.sound = UNNotificationSound.default
-
-           let request = UNNotificationRequest(identifier: "winNotification", content: content, trigger: nil)
-           notificationCenter.add(request) { (error) in
-               if let error = error {
-                   print("Error adding notification request: \(error)")
-               }
-           }
-       }
     
     func showGameOverAlert() {
+        isGameOver = true
         let alertController = UIAlertController(title: "Game Over", message: "You stepped on a mine! Would you like to restart?", preferredStyle: .alert)
         
         let restartAction = UIAlertAction(title: "Restart", style: .default) { _ in
@@ -174,7 +215,9 @@ class MineMapViewController: UIViewController, DiceRollDelegate {
         alertController.addAction(restartAction)
         alertController.addAction(cancelAction)
         
-        present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true) {
+               self.visualizeGrid() // Reveal the mine map after presenting the alert
+           }
         
         // Check if the player has successfully navigated without stepping on any mines
         if !mineMap.contains(where: { row in row.contains(true) }) {
@@ -190,6 +233,7 @@ class MineMapViewController: UIViewController, DiceRollDelegate {
     }
     
     func restartGame() {
+        isGameOver = false
         createGrid()
         placeMines()
         
@@ -217,40 +261,34 @@ class MineMapViewController: UIViewController, DiceRollDelegate {
     }
     
     
+
     func visualizeGrid() {
         let cellSize = gridContainerView.frame.width / CGFloat(gridSize)
 
         // Remove existing cell views from the grid container
         gridContainerView.subviews.forEach { $0.removeFromSuperview() }
 
-        // Update player view position
-        let playerLabel = UILabel(frame: CGRect(x: CGFloat(playerPosition.x) * cellSize,
-                                                y: CGFloat(playerPosition.y) * cellSize,
-                                                width: cellSize,
-                                                height: cellSize))
-        playerLabel.text = "🚩" // emoji
-        playerLabel.font = UIFont.systemFont(ofSize: 50.0)
-        playerLabel.textAlignment = .center
-        gridContainerView.addSubview(playerLabel)
-
         for x in 0..<gridSize {
             for y in 0..<gridSize {
-                if mineMap[x][y] {
-                    let mineLabel = UILabel(frame: CGRect(x: CGFloat(x) * cellSize,
-                                                          y: CGFloat(y) * cellSize,
-                                                          width: cellSize,
-                                                          height: cellSize))
+                let cellFrame = CGRect(x: CGFloat(x) * cellSize, y: CGFloat(y) * cellSize, width: cellSize, height: cellSize)
+
+                if isGameOver && mineMap[x][y] {
+                    // Show mines if game is over
+                    let mineLabel = UILabel(frame: cellFrame)
                     mineLabel.text = "💣" // Bomb emoji
                     mineLabel.font = UIFont.systemFont(ofSize: 50.0)
                     mineLabel.textAlignment = .center
                     gridContainerView.addSubview(mineLabel)
-                } else if playerPosition.x == x && playerPosition.y == y {
-                    // Player view is already added, skip here
+                } else if x == playerPosition.x && y == playerPosition.y {
+                    // Always show player position
+                    let playerLabel = UILabel(frame: cellFrame)
+                    playerLabel.text = "🚩" // Player emoji
+                    playerLabel.font = UIFont.systemFont(ofSize: 50.0)
+                    playerLabel.textAlignment = .center
+                    gridContainerView.addSubview(playerLabel)
                 } else {
-                    let cellView = UIView(frame: CGRect(x: CGFloat(x) * cellSize,
-                                                        y: CGFloat(y) * cellSize,
-                                                        width: cellSize,
-                                                        height: cellSize))
+                    // Add an empty cell
+                    let cellView = UIView(frame: cellFrame)
                     cellView.backgroundColor = UIColor.black
                     cellView.layer.borderWidth = 1.0
                     cellView.layer.borderColor = UIColor.white.cgColor
@@ -259,5 +297,6 @@ class MineMapViewController: UIViewController, DiceRollDelegate {
             }
         }
     }
+
 
 }
