@@ -11,12 +11,16 @@ import CoreMotion
 import SceneKit
 import Combine
 import SwiftUI
+import AVFoundation
+import AudioToolbox
+
 
 protocol DiceRollDelegate: AnyObject {
     func didRollDice(_ result: Int)
 }
 
 class DiceViewController: UIViewController, ObservableObject {
+    var audioPlayer: AVAudioPlayer?
     var diceRollState: DiceRollState
     let motionManager = CMMotionManager()
     var sceneView: SCNView!
@@ -40,7 +44,8 @@ class DiceViewController: UIViewController, ObservableObject {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupAudioPlayer()
+        
         // Create a SceneKit view
         sceneView = SCNView(frame: view.bounds)
         sceneView.backgroundColor = UIColor.white
@@ -78,6 +83,7 @@ class DiceViewController: UIViewController, ObservableObject {
             resultLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             resultLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+        
 
         // Load a 3D model
         if let modelURL = Bundle.main.url(forResource: "dice", withExtension: "dae") {
@@ -123,6 +129,21 @@ class DiceViewController: UIViewController, ObservableObject {
             resultLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
+    
+    func setupAudioPlayer() {
+        guard let soundURL = Bundle.main.url(forResource: "dice-95077", withExtension: "mp3") else {
+            print("Unable to locate audio file.")
+            return
+        }
+
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            audioPlayer?.prepareToPlay()
+        } catch {
+            print("Error setting up audio player: \(error)")
+        }
+    }
+
 
     func handleAccelerometerUpdate(_ acceleration: CMAcceleration) {
         let accelerationThreshold = 2.5  // Adjust this value as needed
@@ -140,6 +161,9 @@ class DiceViewController: UIViewController, ObservableObject {
     }
 
     func rollDice() {
+        audioPlayer?.play() // Play sound effect
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate) // Vibrate the phone
+
         
         // Choose a random face to simulate
         let faces: [SCNVector4] = [

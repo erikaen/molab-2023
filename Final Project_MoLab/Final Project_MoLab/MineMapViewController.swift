@@ -8,8 +8,12 @@
 import UIKit
 import SwiftUI
 import Combine
+import AVFoundation
+
 
 class MineMapViewController: UIViewController, DiceRollDelegate {
+    var bombAudioPlayer: AVAudioPlayer?
+    var celebrationAudioPlayer: AVAudioPlayer?
     var diceRollState: DiceRollState
     init(diceRollState: DiceRollState) {
         self.diceRollState = diceRollState
@@ -34,6 +38,8 @@ class MineMapViewController: UIViewController, DiceRollDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBombAudioPlayer()
+        setupCelebrationAudioPlayer()
         createGrid()
         placeMines()
         playerPosition = (Int.random(in: 0..<gridSize), Int.random(in: 0..<gridSize))
@@ -58,6 +64,35 @@ class MineMapViewController: UIViewController, DiceRollDelegate {
         present(diceViewController!, animated: true, completion: nil)
 
        }
+    
+    func setupBombAudioPlayer() {
+        guard let soundURL = Bundle.main.url(forResource: "explosion-91872", withExtension: "mp3") else {
+            print("Unable to locate bomb sound file.")
+            return
+        }
+
+        do {
+            bombAudioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            bombAudioPlayer?.prepareToPlay()
+        } catch {
+            print("Error setting up bomb sound audio player: \(error)")
+        }
+    }
+
+    func setupCelebrationAudioPlayer() {
+        guard let soundURL = Bundle.main.url(forResource: "tada-fanfare-a-6313", withExtension: "mp3") else {
+            print("Unable to locate celebration sound file.")
+            return
+        }
+
+        do {
+            celebrationAudioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            celebrationAudioPlayer?.prepareToPlay()
+        } catch {
+            print("Error setting up celebration sound audio player: \(error)")
+        }
+    }
+
     
     func addDirectionButtons() {
         let stackView = UIStackView()
@@ -184,6 +219,7 @@ class MineMapViewController: UIViewController, DiceRollDelegate {
     
     
     func showWinNotification() {
+        celebrationAudioPlayer?.play() // Play celebration sound effect
         isGameOver = true
         let alertController = UIAlertController(title: "Congratulations!", message: "You won the game by avoiding mines!", preferredStyle: .alert)
         
@@ -203,6 +239,7 @@ class MineMapViewController: UIViewController, DiceRollDelegate {
 
     
     func showGameOverAlert() {
+        bombAudioPlayer?.play() // Play bomb sound effect
         isGameOver = true
         let alertController = UIAlertController(title: "Game Over", message: "You stepped on a mine! Would you like to restart?", preferredStyle: .alert)
         

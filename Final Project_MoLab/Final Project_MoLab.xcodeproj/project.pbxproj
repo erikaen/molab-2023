@@ -12,6 +12,9 @@
 		7F0905502B185E2C00F0637C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F09054F2B185E2C00F0637C /* Assets.xcassets */; };
 		7F0905532B185E2C00F0637C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F0905522B185E2C00F0637C /* Preview Assets.xcassets */; };
 		7F0905602B187F7600F0637C /* dice.dae in Resources */ = {isa = PBXBuildFile; fileRef = 7F09055F2B187F7600F0637C /* dice.dae */; };
+		7F2C4F2D2B2B167A002C243C /* dice-95077.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F2C4F2C2B2B167A002C243C /* dice-95077.mp3 */; };
+		7F2C4F2F2B2B17DE002C243C /* explosion-91872.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F2C4F2E2B2B17DE002C243C /* explosion-91872.mp3 */; };
+		7F2C4F312B2B184E002C243C /* tada-fanfare-a-6313.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F2C4F302B2B184E002C243C /* tada-fanfare-a-6313.mp3 */; };
 		7FC4FDCB2B218B8F007EFD2D /* MineMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC4FDCA2B218B8F007EFD2D /* MineMapViewController.swift */; };
 		7FC4FDCD2B2195F6007EFD2D /* SharedResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC4FDCC2B2195F6007EFD2D /* SharedResults.swift */; };
 /* End PBXBuildFile section */
@@ -23,6 +26,9 @@
 		7F09054F2B185E2C00F0637C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F0905522B185E2C00F0637C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7F09055F2B187F7600F0637C /* dice.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = dice.dae; sourceTree = "<group>"; };
+		7F2C4F2C2B2B167A002C243C /* dice-95077.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dice-95077.mp3"; sourceTree = "<group>"; };
+		7F2C4F2E2B2B17DE002C243C /* explosion-91872.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "explosion-91872.mp3"; sourceTree = "<group>"; };
+		7F2C4F302B2B184E002C243C /* tada-fanfare-a-6313.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "tada-fanfare-a-6313.mp3"; sourceTree = "<group>"; };
 		7FC4FDCA2B218B8F007EFD2D /* MineMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineMapViewController.swift; sourceTree = "<group>"; };
 		7FC4FDCC2B2195F6007EFD2D /* SharedResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedResults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,6 +68,9 @@
 				7F09054B2B185E2B00F0637C /* Final_Project_MoLabApp.swift */,
 				7F09054D2B185E2B00F0637C /* DiceViewController.swift */,
 				7F09054F2B185E2C00F0637C /* Assets.xcassets */,
+				7F2C4F302B2B184E002C243C /* tada-fanfare-a-6313.mp3 */,
+				7F2C4F2E2B2B17DE002C243C /* explosion-91872.mp3 */,
+				7F2C4F2C2B2B167A002C243C /* dice-95077.mp3 */,
 				7F09055F2B187F7600F0637C /* dice.dae */,
 				7F0905512B185E2C00F0637C /* Preview Content */,
 			);
@@ -136,6 +145,9 @@
 			files = (
 				7F0905602B187F7600F0637C /* dice.dae in Resources */,
 				7F0905532B185E2C00F0637C /* Preview Assets.xcassets in Resources */,
+				7F2C4F2F2B2B17DE002C243C /* explosion-91872.mp3 in Resources */,
+				7F2C4F312B2B184E002C243C /* tada-fanfare-a-6313.mp3 in Resources */,
+				7F2C4F2D2B2B167A002C243C /* dice-95077.mp3 in Resources */,
 				7F0905502B185E2C00F0637C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
